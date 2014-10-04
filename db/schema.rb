@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004004213) do
+ActiveRecord::Schema.define(version: 20141004012857) do
 
   create_table "goals", force: true do |t|
     t.string   "name"
     t.boolean  "complete"
+    t.integer  "list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lists", force: true do |t|
     t.integer  "page_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,2 +1,17 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+<% @user.pages.each do |page| %>
+  <%= page.name %>
+  <% page.lists.each do |list| %>
+    <%= list.name %>
+    <% list.goals.each do |goal| %>
+      <ol>
+        <%= goal.name %>
+        <% goal.steps.each do |step| %>
+          <li><%= step.name %></li>
+        <% end %>
+      </ol>
+    <% end %>
+  <% end %>
+<% end %>

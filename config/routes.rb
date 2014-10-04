@@ -1,8 +1,10 @@
 Goalpost::Application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :pages do
-      resources :goals do
-        resources :steps do
+      resources :lists do
+        resources :goals do
+          resources :steps do
+          end
         end
       end
     end
