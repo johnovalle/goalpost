@@ -1,11 +1,17 @@
 class PagesController < ApplicationController
+  def new
+  end
+  
   def create
-    @page = Page.new(page_params)
-    
-    if @page.save
-      redirect_to user_path(current_user)
-    else
-      render user_path(current_user)
+    @page = Page.create(page_params)
+    # if @page.valid?
+    #       redirect_to user_path(current_user)
+    #     else
+    #       render user_path(current_user)
+    #     end
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
     end
   end
   
@@ -20,8 +26,12 @@ class PagesController < ApplicationController
   end
   
   def destroy
-    Page.find_by_id(params[:id]).destroy
-    redirect_to user_path(current_user)
+    @page = Page.destroy(params[:id])
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
+    end
+    
   end
   
   private

@@ -1,26 +1,19 @@
 <div style="margin-left:auto; margin-right:auto; width:auto;"><h1> my name is <%= current_user.name %></h1></div>
 
 
-
-<%= form_tag user_pages_path(@user.id), :class => "form-inline" do %>
-  <%= text_field_tag "page[name]" %>
-  <%= hidden_field_tag "page[user_id]", @user.id%>
-
-  <%= submit_tag "make a new page" %>
-<% end %>
+<%= link_to "New Page", new_user_page_path(@user.id), id: "new_page", remote: true %>
 
 
 
+<div id="all_pages">
 <% current_user.pages.each do |page| %>
-  <section>
+  <section id="page_<%= page.id %>">
     <b><%= page.name %></b>
     <%= form_tag user_page_path(@user.id,page.id), method: 'put', :class => "form-inline" do %>
       <%= text_field_tag "page[name]" %>
       <%= submit_tag 'update page name' %>
     <% end %>
-    <%= form_tag user_page_path(@user.id,page.id), method: 'delete', :class => "form-inline" do %>
-      <%= submit_tag 'delete page' %>
-    <% end %>
+    <%= link_to "(remove)", user_page_path(@user.id,page.id), method: :delete, remote: true %>
     <br/>
     
     <%= form_tag user_page_lists_path(@user.id,page.id), :class => "form-inline" do %>
@@ -28,6 +21,7 @@
       <%= hidden_field_tag "list[page_id]", page.id %>
       <%= submit_tag "make a new list" %>
     <% end %>
+    <%# render "/pages/page", locals: {page: page} #why does this not work? %>
   <% page.lists.each do |list| %>
     <div>
       
@@ -80,6 +74,6 @@
   <% end %>
   </section>
 <% end %>
-
+</div>
 
 

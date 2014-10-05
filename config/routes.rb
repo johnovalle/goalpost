@@ -1,7 +1,4 @@
 Goalpost::Application.routes.draw do
-  get "pages/create"
-  get "pages/update"
-  get "pages/destroy"
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :pages do
       resources :lists do
