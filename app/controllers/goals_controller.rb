@@ -11,6 +11,6 @@ class GoalsController < ApplicationController
   
   private
     def goal_params
-      params.require(:goal).permit(:list_id, :name)
+      params.require(:goal).permit(:list_id, :name, :complete)
     end
 end

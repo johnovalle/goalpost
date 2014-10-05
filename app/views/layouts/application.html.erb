@@ -7,16 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if user_signed_in? %>
-  <%= render "shared/nav" %>
-<% else %>
-  <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %>
-<% end %>
+  <% if user_signed_in? %>
+    <%= render "shared/nav" %>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %>
+  <% end %>
+  <div class="container">
+    
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
-<%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 </html>

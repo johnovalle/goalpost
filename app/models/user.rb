@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :pages
+  has_many :pages, dependent: :destroy
   accepts_nested_attributes_for :pages
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

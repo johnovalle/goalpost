@@ -9,6 +9,13 @@ class ListsController < ApplicationController
     end
   end
   def update
+    @list = List.find(params[:id])
+    @list.update_attributes(list_params)
+    if @list.save #does update save? and if it does, does this return false?
+      redirect_to user_path(current_user)
+    else
+      render user_path(current_user)
+    end
   end
   def destroy
   end

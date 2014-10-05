@@ -10,6 +10,6 @@ class StepsController < ApplicationController
   
   private
     def step_params
-      params.require(:step).permit(:goal_id, :name)
+      params.require(:step).permit(:goal_id, :name, :complete)
     end
 end

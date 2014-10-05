@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
+  def update
     #test
     @user = User.find(params[:id])
     @user.update_attributes(user_params)
