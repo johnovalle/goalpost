@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
-    p @user
-    p current_user
-    p "SDFDSFDSAFDSFDSAFDSAFDSAFDSAFDSAFDSAFDSAFDS"
-    if current_user = @user
-      
+    if User.find_by_id(params[:id]) == current_user && user_signed_in?
+      @user = User.find(params[:id])
+      @new_page = @user.pages.build
     else
-      redirect_to user_path
+      redirect_to root_path
     end
   end
 
   def edit
+    #test
+    @user = User.find(params[:id])
+    @user.update_attributes(user_params)
   end
 
   def delete
+    #test
+    User.find(params[:id]).destroy
+    redirect_to root_path
   end
 end

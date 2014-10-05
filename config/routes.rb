@@ -1,4 +1,7 @@
 Goalpost::Application.routes.draw do
+  get "pages/create"
+  get "pages/update"
+  get "pages/destroy"
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :pages do
       resources :lists do
@@ -12,8 +15,8 @@ Goalpost::Application.routes.draw do
   #get "users/show"
   #get "users/edit"
   #get "users/delete"
-  devise_for :users
-  root "static_pages#index"
+  devise_for :users, :path => 'accounts'
+  root 'static_pages#index'
   get "static_pages/about"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

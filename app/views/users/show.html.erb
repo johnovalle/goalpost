@@ -1,17 +1,71 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div style="margin-left:auto; margin-right:auto; width:auto;"><h1> my name is <%= current_user.name %></h1></div>
 
-<% @user.pages.each do |page| %>
-  <%= page.name %>
-  <% page.lists.each do |list| %>
-    <%= list.name %>
-    <% list.goals.each do |goal| %>
-      <ol>
-        <%= goal.name %>
-        <% goal.steps.each do |step| %>
-          <li><%= step.name %></li>
-        <% end %>
-      </ol>
-    <% end %>
-  <% end %>
+Make a new page!
+
+<%= form_for [@user, @new_page] do |f| %>
+  Name:
+  <%= f.text_field :name %><br />
+  <%= f.hidden_field :user_id, :value => @user.id%>
+
+  <%= f.submit %>
 <% end %>
+
+<%= form_tag user_pages_path(@user.id) do %>
+  Name:
+  <%= text_field_tag "page[name]" %><br />
+  <%= hidden_field_tag "page[user_id]", @user.id%>
+
+  <%= submit_tag "make a new page" %>
+<% end %>
+
+
+
+<% current_user.pages.each do |page| %>
+  <section>
+    <h3><%= page.name %></h3>
+    Make a new list!
+    <%= form_tag user_page_lists_path(@user.id,page.id) do %>
+      Name:
+      <%= text_field_tag "list[name]" %><br />
+      <%= hidden_field_tag "list[page_id]", page.id %>
+
+      <%= submit_tag "make a new list" %>
+    <% end %>
+  <% page.lists.each do |list| %>
+    <div>
+      <%= list.name %>
+      Make a goal for this list:
+      <%= form_tag user_page_list_goals_path(@user.id,page.id,list.id) do %>
+        Name:
+        <%= text_field_tag "goal[name]" %><br />
+        <%= hidden_field_tag "goal[list_id]", list.id %>
+
+        <%= submit_tag "make a new goal" %>
+      <% end %>
+      <ul>
+    <% list.goals.each do |goal| %>
+    <% p goal %>
+      <li> <%= goal.name %>
+        make a step
+        <%= form_tag user_page_list_goal_steps_path(@user.id,page.id,list.id,goal.id) do %>
+          Name:
+          <%= text_field_tag "step[name]" %><br />
+          <%= hidden_field_tag "step[goal_id]", goal.id %>
+
+          <%= submit_tag "add a step" %>
+        <% end %>
+        <ul>
+      <% goal.steps.each do |step| %>
+        <li><%= step.name%></li>
+      <% end %>
+        </ul>
+      </li>
+    <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </section>
+<% end %>
+
+
+
