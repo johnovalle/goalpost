@@ -1,0 +1,3 @@
+$('#list_form_<%= params[:page_id] %>').remove()
+$('#new_page_link_<%= params[:page_id] %>').show()
+$('#page_<%= params[:page_id] %>').append('<%= j render @list %>')

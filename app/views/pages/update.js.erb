@@ -1,0 +1,5 @@
+console.log("page_update_<%= @page.id %>");
+$('#page_update_<%= @page.id %>').remove();
+$('#page_name_<%= @page.id %>').text('<%= @page.name %>').show();
+//$('#all_pages').append('<%= j render partial: "pages/page", :locals => { :page => @page }%> ');
+

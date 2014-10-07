@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   
   def create
     @page = Page.create(page_params)
+    @user = current_user
     # if @page.valid?
     #       redirect_to user_path(current_user)
     #     else
@@ -14,14 +15,21 @@ class PagesController < ApplicationController
       format.js
     end
   end
+  def edit
+    @page = Page.find_by_id(params[:id])
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
+    end
+  end
   
   def update
+    puts "update from controller"
     @page = Page.find_by_id(params[:id])
     @page.update_attributes(page_params)
-    if @page.save
-      redirect_to user_path(current_user)
-    else
-      render user_path(current_user)
+    respond_to do |format|
+      format.html { }
+      format.js { p "javscript" }
     end
   end
   
@@ -29,7 +37,7 @@ class PagesController < ApplicationController
     @page = Page.destroy(params[:id])
     respond_to do |format|
       format.html { redirect_to user_path(current_user) }
-      format.js
+      format.js 
     end
     
   end

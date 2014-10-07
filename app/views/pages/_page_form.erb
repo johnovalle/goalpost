@@ -1,6 +1,6 @@
-<%= form_tag user_pages_path(params[:user_id]), id: "new_page_form", :class => "form-inline", remote: true do %>
+<%= form_tag user_pages_path(current_user.id), id: "new_page_form", :class => "form-inline", remote: true do %>
   <%= text_field_tag "page[name]" %>
-  <%= hidden_field_tag "page[user_id]", params[:user_id] %>
+  <%= hidden_field_tag "page[user_id]", current_user.id %>
 
   <%= submit_tag "make a new page" %>
 <% end %>

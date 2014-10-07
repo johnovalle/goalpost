@@ -1,0 +1,2 @@
+console.log("fired!  #page_name_<%= @page.id %>");
+$("#page_name_<%= @page.id %>").hide().after('<%= j render partial: "edit_form", locals: {page: @page} %>');

@@ -1,0 +1,9 @@
+<li><%= step.name %>
+  <%= form_tag user_page_list_goal_step_path(current_user.id,page.id,list.id,goal.id,step.id), method: 'put', :class => "form-inline" do %>
+    <%= text_field_tag "step[name]" %>
+    <%= submit_tag 'update step name' %>
+  <% end %>
+  <%= form_tag user_page_list_goal_step_path(current_user.id,page.id,list.id,goal.id,step.id), method: 'delete', :class => "form-inline" do %>
+    <%= submit_tag 'delete step' %>
+  <% end %>
+</li>

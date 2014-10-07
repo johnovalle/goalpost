@@ -1,17 +1,12 @@
-<% page = @page %>
-<% user = params[:user_id] %>
 
 <section id="page_<%= page.id %>">
-<b><%= page.name %></b>
-    <%= form_tag user_page_path(user,page.id), method: 'put', :class => "form-inline" do %>
-      <%= text_field_tag "page[name]" %>
-      <%= submit_tag 'update page name' %>
-    <% end %>
-    <%= link_to "(remove)", user_page_path(user,page.id), method: :delete, remote: true %>
+    <b><%= link_to page.name, edit_user_page_path(current_user.id,page.id), id: "page_name_#{page.id}", remote: true %></b>
+    <%= link_to "(remove)", user_page_path(current_user.id,page.id), method: :delete, remote: true %>
     <br/>
-    <%= form_tag user_page_lists_path(user,page.id), :class => "form-inline" do %>
-      <%= text_field_tag "list[name]" %>
-      <%= hidden_field_tag "list[page_id]", page.id %>
-      <%= submit_tag "make a new list" %>
+    <%= link_to 'Add a list', new_user_page_list_path(current_user.id,page.id), id: "new_page_link_#{page.id}", remote: true %>
+    
+    
+    <% page.lists.each do |list| %>
+      <%= render :partial => "lists/list", :locals => {:page => page, :list => list} %>
     <% end %>
   </section>

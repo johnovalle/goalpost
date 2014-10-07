@@ -1,12 +1,16 @@
 class ListsController < ApplicationController
+  def new
+  end
+  
   def create
     @list = List.new(list_params)
+    @list.save
     
-    if @list.save
-      redirect_to user_path(current_user)
-    else
-      render user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
     end
+    
   end
   def update
     @list = List.find(params[:id])
@@ -18,6 +22,8 @@ class ListsController < ApplicationController
     end
   end
   def destroy
+    @list = List.find(params[:id]).destroy
+    redirect_to user_path(current_user)
   end
   
   private

@@ -1,3 +1,5 @@
+//console.log("fire god!");
 $('#new_page_form').remove();
 $('#new_page').show();
-$('#all_pages').append('<%= j render @page %>' );
+$('#all_pages').append('<%= j render partial: "pages/page", :locals => { :page => @page }%> ');
+

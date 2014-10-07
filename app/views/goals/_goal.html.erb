@@ -1,0 +1,21 @@
+
+<% p goal %>
+  <li> <%= goal.name %>
+    <%= form_tag user_page_list_goal_path(current_user.id,page.id,list.id,goal.id), method: 'put', :class => "form-inline" do %>
+      <%= text_field_tag "goal[name]" %>
+      <%= submit_tag 'update goal name' %>
+    <% end %>
+    <%= form_tag user_page_list_goal_path(current_user.id,page.id,list.id,goal.id), method: 'delete', :class => "form-inline" do %>
+      <%= submit_tag 'delete goal' %>
+    <% end %><br/>
+    <%= form_tag user_page_list_goal_steps_path(current_user.id,page.id,list.id,goal.id), :class => "form-inline" do %>
+      <%= text_field_tag "step[name]" %>
+      <%= hidden_field_tag "step[goal_id]", goal.id %>
+      <%= submit_tag "add a step" %>
+    <% end %>
+    <ul>
+      <% goal.steps.each do |step| %>
+        <%= render partial: "steps/step", locals: { page: page, list: list, goal: goal, step: step } %>
+      <% end %>
+    </ul>
+  </li>
