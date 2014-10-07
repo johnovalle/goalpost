@@ -2,12 +2,9 @@
   page_id = page.id if defined?(page)
   page_id ||= params[:page_id]
 %>
-<div>
-  <%= list.name %>
-  <%= form_tag user_page_list_path(current_user.id,page_id,list.id), method: 'put', :class => "form-inline" do %>
-    <%= text_field_tag "list[name]" %>
-    <%= submit_tag 'update list name' %>
-  <% end %>
+<div id="list_<%= list.id %>">
+  <%= link_to list.name, edit_user_page_list_path(current_user.id,page_id,list.id), id: "list_name_#{list.id}", remote: true %>
+  
   <%= link_to "(x)", user_page_list_path(current_user.id,page_id,list.id), method: 'delete', remote: true %>
   <br/>
   <%= form_tag user_page_list_goals_path(current_user.id,page_id,list.id), :class => "form-inline" do %>
