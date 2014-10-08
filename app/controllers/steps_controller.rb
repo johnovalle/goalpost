@@ -1,26 +1,40 @@
 class StepsController < ApplicationController
+  def new
+  end
+  
   def create
     @step = Step.new(step_params)
-    if @step.save
-      redirect_to user_path(current_user)
-    else
-      redner user_path(current_user)
+    @step.save
+    
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
+    end
+  end
+  
+  def edit
+    @step = Step.find(params[:id])
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
     end
   end
   
   def update
     @step = Step.find(params[:id])
     @step.update_attributes(step_params)
-    if @step.save
-      redirect_to user_path(current_user)
-    else
-      render user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
     end
   end
   
   def destroy
     @step = Step.find(params[:id]).destroy
-    redirect_to user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
+    end
   end
   
   private

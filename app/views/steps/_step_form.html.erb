@@ -1,0 +1,5 @@
+<%= form_tag user_page_list_goal_steps_path(current_user.id,params[:page_id],params[:list_id],params[:goal_id]), :class => "form-inline", id: "step_form_#{params[:goal_id]}", remote: true do %>
+    <%= text_field_tag "step[name]" %>
+    <%= hidden_field_tag "step[goal_id]", params[:goal_id] %>
+    <%= submit_tag "add a step" %>
+  <% end %>

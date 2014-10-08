@@ -1,0 +1,3 @@
+$('#step_form_<%= params[:goal_id] %>').remove();
+$('#new_step_link_<%= params[:goal_id] %>').show()
+$('#goal_<%= params[:goal_id] %> > ul').append('<%= j render @step %>');
