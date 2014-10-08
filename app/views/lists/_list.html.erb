@@ -7,11 +7,7 @@
   
   <%= link_to "(x)", user_page_list_path(current_user.id,page_id,list.id), method: 'delete', remote: true %>
   <br/>
-  <%= form_tag user_page_list_goals_path(current_user.id,page_id,list.id), :class => "form-inline" do %>
-    <%= text_field_tag "goal[name]" %>
-    <%= hidden_field_tag "goal[list_id]", list.id %>
-    <%= submit_tag "make a new goal" %>
-  <% end %>
+  <%= link_to "Add a goal", new_user_page_list_goal_path(current_user.id,page_id,list.id), id: "new_goal_link_#{list.id}", remote: true %>
   <ul>
   <% list.goals.each do |goal| %>
     <%= render partial: "goals/goal", locals: {page: page, list: list, goal: goal} %>

@@ -1,0 +1,1 @@
+$("#goal_name_<%= @goal.id %>").hide().after('<%= j render partial: "goals/edit_form", locals: {goal: @goal} %>');

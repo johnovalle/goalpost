@@ -1,0 +1,3 @@
+$('#goal_form_<%= params[:list_id] %>').remove()
+$('#new_goal_link_<%= params[:list_id] %>').show()
+$('#list_<%= params[:list_id] %> > ul').append('<%= j render @goal %>')

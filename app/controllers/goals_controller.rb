@@ -1,27 +1,46 @@
 class GoalsController < ApplicationController
+  def new
+  end
+  
   def create
     @goal = Goal.new(goal_params)
     
     if @goal.save
-      redirect_to user_path(current_user)
+      
     else
       render user_path(current_user)
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
+    end
+  end
+  
+  def edit
+    @goal = Goal.find(params[:id])
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
     end
   end
   
   def update
     @goal = Goal.find(params[:id])
     @goal.update_attributes(goal_params)
-    if @goal.save
-      redirect_to user_path(current_user)
-    else
-      render user_path(current_user)
+    @goal.save
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
     end
   end
   
   def destroy
     @goal = Goal.find(params[:id]).destroy
-    redirect_to user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js
+    end
   end
   
   private
