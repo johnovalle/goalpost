@@ -2,6 +2,10 @@ class PagesController < ApplicationController
   def new
   end
   
+  def show
+    @page = Page.find_by_id(params[:id])
+  end
+  
   def create
     @page = Page.create(page_params)
     @user = current_user
