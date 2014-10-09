@@ -2,4 +2,4 @@
 $('#new_page_form').remove();
 $('#new_page').show();
 $('#all_pages').append('<%= j render partial: "pages/page", :locals => { :page => @page }%> ');
-
+$('#pages_menu').append('<li><%= j link_to @page.name, user_page_path(current_user.id,@page.id), id: "page_nav_link_#{@page.id}" %> </li>');

@@ -1,4 +1,4 @@
-<div style="margin-left:auto; margin-right:auto; width:auto;"><h1> my name is <%= current_user.name %></h1></div>
+<div style="margin-left:auto; margin-right:auto; width:auto;"><h1> Welcome <%= current_user.name %>!</h1></div>
 
 
 <%= link_to "New Page", new_user_page_path(@user.id), id: "new_page", remote: true %>

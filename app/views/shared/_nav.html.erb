@@ -17,10 +17,10 @@
         <li><%= link_to current_user.name, current_user %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages<span class="caret"></span></a>
-          <%#  extra menu should only appear if there are pages %>
-          <ul class="dropdown-menu" role="menu">
+          <!--  extra menu should only appear if there are pages -->
+            <ul class="dropdown-menu" role="menu" id="pages_menu">
             <% current_user.pages.each do |page| %>
-              <li><%= link_to page.name, [current_user, page] %></li>
+              <li><%= link_to page.name, [current_user, page], id: "page_nav_link_#{page.id}" %></li>
             <% end %>
           </ul>
         </li>
