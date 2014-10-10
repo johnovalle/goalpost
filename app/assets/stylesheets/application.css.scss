@@ -17,4 +17,8 @@
 @import "bootstrap";
 
 
-.form-inline {display:inline-block;}
+.form-inline, .inline {display:inline-block;}
+.small_edit {color:#b2b2b2; font-size:.8em;}
+.page_title {font-size:1.2em; padding-right:1em;}
+.lists {width:90%;}
+.list_float {float:left; padding-right:1em; margin:1em;}

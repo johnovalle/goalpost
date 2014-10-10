@@ -2,15 +2,16 @@
   page_id = page.id if defined?(page)
   page_id ||= params[:page_id]
 %>
-<div id="list_<%= list.id %>">
+<div id="list_<%= list.id %>" class="inline">
   <%= link_to list.name, edit_user_page_list_path(current_user.id,page_id,list.id), id: "list_name_#{list.id}", remote: true %>
   
   <%= link_to "(x)", user_page_list_path(current_user.id,page_id,list.id), method: 'delete', remote: true %>
   <br/>
   <%= link_to "Add a goal", new_user_page_list_goal_path(current_user.id,page_id,list.id), id: "new_goal_link_#{list.id}", remote: true %>
-  <ul>
+  </div>
+  <ul  class="inline">
   <% list.goals.each do |goal| %>
     <%= render partial: "goals/goal", locals: {page: page, list: list, goal: goal} %>
   <% end %>
   </ul>
-</div>
+

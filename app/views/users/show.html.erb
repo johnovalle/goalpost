@@ -1,11 +1,16 @@
-<div style="margin-left:auto; margin-right:auto; width:auto;"><h1> Welcome <%= current_user.name %>!</h1></div>
+<div style="margin-left:auto; margin-right:auto; width:auto;"><h1 class="inline"> Welcome <%= current_user.name %>!</h1></div>
 
 
-<%= link_to "New Page", new_user_page_path(@user.id), id: "new_page", remote: true %>
-<div id="all_pages">
+
+
+<table id="all_pages">
+  <tr>
+    <th>Your pages:</th>
+    <th><%= link_to "Add a new page", new_user_page_path(@user.id), id: "new_page", remote: true, class: "small_edit" %></th>
+  </tr>
 <% current_user.pages.each do |page| %>
-  <%= render partial: "pages/page", locals: {page: page} %>
+  <%= render partial: "pages/page_2", locals: {page: page} %>
 <% end %>
-</div>
+</table>
 
 

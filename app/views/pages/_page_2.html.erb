@@ -1,0 +1,4 @@
+<tr id="page_<%= page.id %>">
+    <td class="page_title"><%= link_to page.name, user_page_path(current_user.id,page.id), class: "page_name", id: "page_name_#{page.id}" %></td>
+    <td><%= link_to "(edit)", edit_user_page_path(current_user.id,page.id), remote: true, class: "small_edit" %> <%= link_to "(remove)", user_page_path(current_user.id,page.id), method: :delete, remote: true, class: "small_edit" %></td>
+  </tr>

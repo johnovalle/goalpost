@@ -2,8 +2,9 @@
 <%= link_to 'Add a list', new_user_page_list_path(current_user.id,page.id), id: "new_page_link_#{page.id}", remote: true %>
 <br/>
 <br/>
-<section id="page_<%= page.id %>">
-  <% page.lists.each do |list| %>
+<% page.lists.each do |list| %>
+  <section id="page_<%= page.id %>" class="inline">
     <%= render :partial => "lists/list", :locals => {:page => page, :list => list} %>
-  <% end %>
-  </section>   
+  </section>
+  <br/>
+<% end %>
