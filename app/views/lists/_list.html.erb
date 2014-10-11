@@ -2,7 +2,7 @@
   page_id = page.id if defined?(page)
   page_id ||= params[:page_id]
 %>
-<div id="list_<%= list.id %>" class="inline">
+  <div class="inline top">
   <%= link_to list.name, edit_user_page_list_path(current_user.id,page_id,list.id), id: "list_name_#{list.id}", remote: true %>
   
   <%= link_to "(x)", user_page_list_path(current_user.id,page_id,list.id), method: 'delete', remote: true %>

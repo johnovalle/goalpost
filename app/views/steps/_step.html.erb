@@ -7,7 +7,7 @@
   goal_id ||= params[:goal_id]
 %>
 
-<li id="step_<%= step.id %>"  class="inline">
+<li id="step_<%= step.id %>" class="top">
   <%= link_to step.name, edit_user_page_list_goal_step_path(current_user.id,page_id,list_id,goal_id,step.id), id: "step_name_#{step.id}", remote: true %>
    
   <%= link_to "x", user_page_list_goal_step_path(current_user.id,page_id,list_id,goal_id,step.id), method: 'delete', remote: true %>

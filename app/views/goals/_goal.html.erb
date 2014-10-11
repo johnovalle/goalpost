@@ -4,11 +4,13 @@
   list_id = list.id if defined?(list)
   list_id ||= params[:list_id]
 %>
-<li id="goal_<%= goal.id %>"> 
+<li id="goal_<%= goal.id %>" class="lists_space">
+  <div class="inline top">
   <%= link_to goal.name, edit_user_page_list_goal_path(current_user.id,page_id,list_id,goal.id), id: "goal_name_#{goal.id}", remote: true %>
   
   <%= link_to "x", user_page_list_goal_path(current_user.id,page_id,list_id,goal.id), method: 'delete', remote: true %> <br/>
   <%= link_to "Add a step", new_user_page_list_goal_step_path(current_user.id,page_id,list_id,goal.id), id: "new_step_link_#{goal.id}", remote:true %>
+</div>
   <ul  class="inline">
     <% goal.steps.each do |step| %>
       <%= render partial: "steps/step", locals: { page: page, list: list, goal: goal, step: step } %>

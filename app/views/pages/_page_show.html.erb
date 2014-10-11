@@ -3,7 +3,7 @@
 <br/>
 <br/>
 <% page.lists.each do |list| %>
-  <section id="page_<%= page.id %>" class="inline">
+  <section id="list_<%= list.id %>" class="inline">
     <%= render :partial => "lists/list", :locals => {:page => page, :list => list} %>
   </section>
   <br/>
