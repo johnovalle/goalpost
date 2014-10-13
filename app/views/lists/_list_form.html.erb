@@ -1,5 +1,5 @@
-<%= form_tag user_page_lists_path(current_user.id,params[:page_id]), :class => "form-inline", id: "list_form_#{params[:page_id]}", remote: true do %>
-  <%= text_field_tag "list[name]" %>
+<%= form_tag user_page_lists_path(current_user.id,params[:page_id]), :class => "form-inline form-group", id: "list_form_#{params[:page_id]}", remote: true do %>
+  <%= text_field_tag "list[name]", "", class: "form-control" %>
   <%= hidden_field_tag "list[page_id]", params[:page_id] %>
-  <%= submit_tag "make a new list" %>
+  <%= submit_tag "make a new list", class: "btn btn-primary" %>
 <% end %>

@@ -3,13 +3,13 @@
   page_id ||= params[:page_id]
 %>
   <div class="inline top">
-  <%= link_to list.name, edit_user_page_list_path(current_user.id,page_id,list.id), id: "list_name_#{list.id}", remote: true %>
+  <%= link_to list.name, edit_user_page_list_path(current_user.id,page_id,list.id), id: "list_name_#{list.id}", remote: true, class: "list_name" %>
   
-  <%= link_to "(x)", user_page_list_path(current_user.id,page_id,list.id), method: 'delete', remote: true %>
+  <%= link_to "(remove)", user_page_list_path(current_user.id,page_id,list.id), method: 'delete', remote: true, class: "small_edit" %>
   <br/>
-  <%= link_to "Add a goal", new_user_page_list_goal_path(current_user.id,page_id,list.id), id: "new_goal_link_#{list.id}", remote: true %>
+  <%= link_to "Add a goal", new_user_page_list_goal_path(current_user.id,page_id,list.id), id: "new_goal_link_#{list.id}", remote: true, class: "small_edit" %>
   </div>
-  <ul  class="inline">
+  <ul  class="inline clean_list">
   <% list.goals.each do |goal| %>
     <%= render partial: "goals/goal", locals: {page: page, list: list, goal: goal} %>
   <% end %>

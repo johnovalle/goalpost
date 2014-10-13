@@ -1,5 +1,5 @@
-<%= form_tag user_page_list_goals_path(current_user.id,params[:page_id],params[:list_id]), :class => "form-inline", id: "goal_form_#{params[:list_id]}", remote: true do %>
-    <%= text_field_tag "goal[name]" %>
+<%= form_tag user_page_list_goals_path(current_user.id,params[:page_id],params[:list_id]), :class => "form-inline form-group", id: "goal_form_#{params[:list_id]}", remote: true do %>
+    <%= text_field_tag "goal[name]", "", class: "form-control" %>
     <%= hidden_field_tag "goal[list_id]", params[:list_id] %>
-    <%= submit_tag "make a new goal" %>
+    <%= submit_tag "make a new goal", class: "btn btn-primary" %>
   <% end %>

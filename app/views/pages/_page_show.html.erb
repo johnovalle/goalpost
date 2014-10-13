@@ -1,5 +1,5 @@
 <h1><%= link_to page.name, edit_user_page_path(current_user.id,page.id), id: "page_name_#{page.id}", class:"page_name", remote: true %></h1>
-<%= link_to 'Add a list', new_user_page_list_path(current_user.id,page.id), id: "new_page_link_#{page.id}", remote: true %>
+<%= link_to 'Add a list', new_user_page_list_path(current_user.id,page.id), id: "new_page_link_#{page.id}", remote: true, class: "small_edit" %>
 <br/>
 <br/>
 <% page.lists.each do |list| %>
