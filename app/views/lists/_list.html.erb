@@ -2,6 +2,7 @@
   page_id = page.id if defined?(page)
   page_id ||= params[:page_id]
 %>
+<section id="list_<%= list.id %>" class="inline">
   <div class="inline top">
   <%= link_to list.name, edit_user_page_list_path(current_user.id,page_id,list.id), id: "list_name_#{list.id}", remote: true, class: "list_name" %>
   
@@ -9,9 +10,10 @@
   <br/>
   <%= link_to "Add a goal", new_user_page_list_goal_path(current_user.id,page_id,list.id), id: "new_goal_link_#{list.id}", remote: true, class: "small_edit" %>
   </div>
-  <ul  class="inline clean_list">
+  <ul class="inline clean_list">
   <% list.goals.each do |goal| %>
     <%= render partial: "goals/goal", locals: {page: page, list: list, goal: goal} %>
   <% end %>
   </ul>
-
+</section>
+<br/>
