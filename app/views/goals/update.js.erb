@@ -1,2 +1,4 @@
 $('#goal_update_<%= @goal.id %>').remove();
 $('#goal_name_<%= @goal.id %>').text('<%= @goal.name %>').show();
+$('#goal_name_<%= @goal.id %>').toggleClass("strike", <%= @goal.complete %>);
+  

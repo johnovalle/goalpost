@@ -6,10 +6,23 @@
 %>
 <li id="goal_<%= goal.id %>" class="lists_space">
   <div class="inline top">
-  <%= link_to goal.name, edit_user_page_list_goal_path(current_user.id,page_id,list_id,goal.id), id: "goal_name_#{goal.id}", remote: true, class: "goal_name" %>
+  <% if goal.complete %>
+    <%= link_to goal.name, edit_user_page_list_goal_path(current_user.id,page_id,list_id,goal.id), id: "goal_name_#{goal.id}", remote: true, class: "goal_name strike" %>
+  <% else %>
+    <%= link_to goal.name, edit_user_page_list_goal_path(current_user.id,page_id,list_id,goal.id), id: "goal_name_#{goal.id}", remote: true, class: "goal_name" %>
+  <% end %>
   
-  <%= link_to "(remove)", user_page_list_goal_path(current_user.id,page_id,list_id,goal.id), method: 'delete', remote: true, class: "small_edit" %> <br/>
-  <%= link_to "Add a step", new_user_page_list_goal_step_path(current_user.id,page_id,list_id,goal.id), id: "new_step_link_#{goal.id}", remote:true, class: "small_edit" %>
+  <%= form_tag user_page_list_goal_path(current_user.id,page_id,list_id,goal.id), :class => "form-inline form-group goal_complete", id: "goal_complete_#{list_id}", method: "put", remote: true do %>
+    <%= check_box "goal","complete", {checked: goal.complete}, '1', '0' %>
+    <%= hidden_field_tag "goal[list_id]", list_id %>
+  <% end %>
+  
+  <%= link_to "(remove)", user_page_list_goal_path(current_user.id,page_id,list_id,goal.id), method: 'delete', remote: true, class: "small_edit" %><br/>
+  <%= link_to "Add a step", new_user_page_list_goal_step_path(current_user.id,page_id,list_id,goal.id), id: "new_step_link_#{goal.id}", remote:true, class: "small_edit add" %>
+  
+  
+  
+  
 </div>
   <ul  class="inline">
     <% goal.steps.each do |step| %>

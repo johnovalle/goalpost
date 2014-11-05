@@ -30,7 +30,7 @@ class GoalsController < ApplicationController
     @goal.update_attributes(goal_params)
     @goal.save
     respond_to do |format|
-      format.html { redirect_to user_path(current_user) }
+      format.html { redirect_to user_page_path(current_user, params[:page_id]) }
       format.js
     end
   end
